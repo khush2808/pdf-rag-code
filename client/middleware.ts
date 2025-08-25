@@ -1,5 +1,12 @@
-import { clerkMiddleware } from '@clerk/nextjs/server';
-export default clerkMiddleware();
+// Middleware is disabled for this simplified version
+// To enable authentication, configure Clerk and uncomment the lines below
+
+// import { clerkMiddleware } from '@clerk/nextjs/server';
+// export default clerkMiddleware();
+
+export default function middleware() {
+  // No-op middleware for now
+}
 
 export const config = {
   matcher: [
