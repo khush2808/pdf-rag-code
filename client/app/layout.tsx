@@ -3,10 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import {
   ClerkProvider,
   SignedOut,
-  SignUp,
   SignedIn,
   SignUpButton,
-  UserButton,
 } from '@clerk/nextjs';
 import './globals.css';
 
