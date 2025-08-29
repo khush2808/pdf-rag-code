@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "dev": "docker-compose up -d && sleep 3 && concurrently \"npm run dev --prefix server\" \"npm run dev:worker --prefix server\" \"npm run dev --prefix client\"",
+    "dev:services": "docker-compose up -d",
+    "dev:apps": "concurrently \"npm run dev --prefix server\" \"npm run dev:worker --prefix server\" \"npm run dev --prefix client\"",
+    "dev:stop": "docker-compose down"
+  },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "opencode-ai": "^0.5.28"
   }
 }
