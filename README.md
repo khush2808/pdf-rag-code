@@ -8,7 +8,7 @@ This application follows a **microservices-inspired architecture** with clear se
 
 - **Frontend**: Next.js 15 with React 19 and TypeScript
 - **Backend**: Node.js Express server with BullMQ for job processing
-- **AI Services**: OpenAI for embeddings and chat completions
+- **AI Services**: Gemini Flash & Embeddings (configurable: Gemini, GitHub Models, or OpenAI)
 - **Vector Database**: Qdrant for similarity search
 - **Queue System**: Redis/Valkey with BullMQ for async processing
 - **Authentication**: Clerk for user management
@@ -19,7 +19,7 @@ This application follows a **microservices-inspired architecture** with clear se
 
 - Node.js 18+
 - Docker and Docker Compose
-- OpenAI API key
+- AI Provider API key (Gemini recommended, GitHub Models, or OpenAI)
 - Clerk account for authentication
 
 ### 1. Clone the Repository
@@ -42,12 +42,29 @@ Create `.env` files in both `server/` and `client/` directories:
 
 **server/.env:**
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+# AI Provider Configuration (choose one)
+AI_PROVIDER=gemini
+
+# Gemini Configuration (recommended)
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+GEMINI_CHAT_MODEL=gemini-2.0-flash-exp
+GEMINI_EMBEDDING_MODEL=text-embedding-004
+
+# Uncomment for GitHub Models
+# AI_PROVIDER=github
+# GITHUB_TOKEN=your_github_token_here
+# GITHUB_BASE_URL=https://models.github.ai/inference
+# GITHUB_CHAT_MODEL=openai/gpt-4o-mini
+
+# Database Configuration
 REDIS_HOST=localhost
 REDIS_PORT=6379
 QDRANT_URL=http://localhost:6333
 NODE_ENV=development
 ```
+
+> 📋 **See [AI_MODELS_SETUP.md](./AI_MODELS_SETUP.md) for detailed setup instructions for each provider**
 
 **client/.env.local:**
 ```env
